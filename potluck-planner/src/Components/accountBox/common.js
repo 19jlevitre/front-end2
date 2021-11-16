@@ -6,6 +6,8 @@ export const BoxContainer = styled.div`
     flex-direction: column;
     align-items: center;
     margin-top: 10px;
+    width: 100%;
+    width: 100%;
     `;
 
 export const FormContainer = styled.div`

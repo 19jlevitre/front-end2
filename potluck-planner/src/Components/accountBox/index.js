@@ -69,19 +69,31 @@ const BackDrop = styled.div`
         flex-direction: column;
         padding: 0 1.0rem;
         `;
-
+    //Styling that was in App I moved below, should still work
+    const AppContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    `;
     export function AccountBox(props) {
-        return <BoxContainer>
-            <TopContainer>
-                <BackDrop />
-                <HeaderContainer>
-                    <HeaderText>Sign</HeaderText>
-                    <HeaderText>Up</HeaderText>
-                    <SmallText>Please Sign Up to Continue!</SmallText>
-                </HeaderContainer>
-            </TopContainer>
-            <InnerContainer>
-                <SignupForms />
-            </InnerContainer>
-        </BoxContainer>
-    }
+        return (
+            <AppContainer>
+                  <BoxContainer>
+                    <TopContainer>
+                        <BackDrop />
+                        <HeaderContainer>
+                            <HeaderText>Sign</HeaderText>
+                            <HeaderText>Up</HeaderText>
+                            <SmallText>Please Sign Up to Continue!</SmallText>
+                        </HeaderContainer>
+                    </TopContainer>
+                    <InnerContainer>
+                        <SignupForms />
+                    </InnerContainer>
+                </BoxContainer>
+            </AppContainer>
+    )
+}

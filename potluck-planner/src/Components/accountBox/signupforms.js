@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { BoxContainer, FormContainer, Input, SubmitButton } from './common';
 import axios from 'axios';
+//React Router 6 uses Navigate instead of history
+import { useNavigate } from 'react-router';
 
   //Initial Input Values
   const initialSignUp = {
@@ -10,6 +12,8 @@ import axios from 'axios';
 
 export function SignupForms(props) {
     
+    //Initializing Navigate
+    const navigate = useNavigate()
     //Post Return Message 
     const [ message, setMessage ] = useState('')
     //Initializing State Input Values
@@ -28,7 +32,8 @@ export function SignupForms(props) {
             .then(res => {
                 console.log(res)
                 res.statusText === 'Created' ? setMessage('Welcome!') : setMessage('We are having some difficulties right now, please try again later!')
-               
+                //I set a timeout for 1 second so that the welcome would appear, and then it would route you to the login page
+                setTimeout(() => res.statusText === 'Created' ? navigate('/login') : console.log('Not Logging In'), 1000) 
             })
             .catch(err => {
                 console.log('hello this is your ', err)
@@ -36,6 +41,8 @@ export function SignupForms(props) {
                 setMessage('Sorry, your username may be taken!')
             })
     }
+
+    
     
     return (
         <BoxContainer>
@@ -44,7 +51,7 @@ export function SignupForms(props) {
                 <form onSubmit={onSubmit}> 
                     <Input type="username" placeholder="username" name='username' onChange={onChange} />
                     <Input type="password" placeholder="password" name='password' onChange={onChange} />
-                    <SubmitButton type="submit">Sign Up</SubmitButton>
+                    <SubmitButton type="submit" >Sign Up</SubmitButton>
                 </form>
             </FormContainer>
         </BoxContainer>
