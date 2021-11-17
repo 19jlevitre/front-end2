@@ -11,7 +11,7 @@ const initialLogin = {
 }
 const Wrapper = styled.div`
 text-align: center;
-form{
+form {
     background-color: #d9d9d9;
     display: flex;
     flex-direction: column;
@@ -32,7 +32,7 @@ form{
     background-color: #e6ac00;
     font-size: 1.5rem;
 }
-h2{
+h2 {
     font-size: 3rem;
     height: 300px;
     width: 40%;
