@@ -51,7 +51,7 @@ export default function Login() {
     const [ loginValues, setLoginValues ] = useState(initialLogin)
     const [ message, setMessage ] = useState('')
     //Initializing Navigate
-    const navigate = useNavigate
+    const navigate = useNavigate();
 
     function onChange(evt) {
         const { name, value } = evt.target;
@@ -65,11 +65,10 @@ export default function Login() {
             .then(res => {
                 console.log(res)
                 setMessage(res.data.message)
-                setTimeout(() => message.includes('welcome') ? navigate('/profile') : console.log('login failed'))
+                setTimeout(() => res.data.message.includes('welcome') ? navigate('/profile') : console.log('login failed'), 1000)
             })
             .catch(err => {
                 console.log('hello this is your ', err)
-              
             })
     }
    

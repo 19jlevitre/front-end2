@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { AccountBox } from './Components/accountBox';
 import Login from './Components/LogIn';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-
+import Profile from './Components/Profile';
 
 
 
@@ -14,7 +14,8 @@ function App() {
      <Router>
         <Routes>
           <Route path='/' element={<AccountBox />} />
-          <Route path='/login' element={<Login />} />      
+          <Route path='/login' element={<Login />} />
+          <Route path='/profile' element={<Profile />} />      
         </Routes>
       </Router>
   );
