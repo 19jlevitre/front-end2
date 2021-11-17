@@ -12,6 +12,9 @@ const showNewForm = styled.div`
         flex-direction: column;
     }
 `
+const userForm = styled.div`
+    display: show;
+`
 
 const initialEvent = {
     name: '',
@@ -25,10 +28,16 @@ const initialEvent = {
 export default function NewEvent() {
 
     const [RealValue, setRealValue] = useState(NewForm)
+    const [ userInviteStyle, setUserInviteStyle ] = useState(NewForm)
     const [ eventValues, setEventValues ] = useState(initialEvent)
+    const [ message, setMessage ] = useState('')
 
     const onClick = () => {
       setRealValue(showNewForm)
+    }
+
+    const clicker = () => {
+        setUserInviteStyle(userForm)
     }
 
     const onChange = (evt) => {
@@ -42,10 +51,11 @@ export default function NewEvent() {
         axios.post('https://buildweek4unit.herokuapp.com/api/potlucks', {...eventValues})
             .then((res) => {
                 console.log(res)
-
+                res.statusText === 'Created' ? setMessage('Potluck Created! Now invite your Users!') : setMessage('There was an issue with creating your Potluck!')
             })
             .catch((err) => {
                 console.log('this is your ', err)
+                setMessage("Oops, something bad happened. Try again later!")
             })
     }
 
@@ -93,7 +103,7 @@ export default function NewEvent() {
                             onChange={onChange}
                         />
                     </label>
-                    <button type='submit'>Create Event</button>
+                    <button type='submit' onClick={clicker}>Create Event</button>
                 </form>
             </RealValue>
         
