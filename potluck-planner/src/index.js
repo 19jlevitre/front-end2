@@ -8,7 +8,7 @@ import Profile from './Components/Profile'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Profile />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
