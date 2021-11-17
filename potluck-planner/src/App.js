@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { AccountBox } from './Components/accountBox';
 import Login from './Components/LogIn';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Profile from './Components/Profile';
+import Profile from './Components/ProfileBoxes/Profile';
 
 
 
