@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
-
+import { useNavigate } from "react-router";
 
 
 const initialLogin = {
@@ -50,6 +50,8 @@ export default function Login() {
 
     const [ loginValues, setLoginValues ] = useState(initialLogin)
     const [ message, setMessage ] = useState('')
+    //Initializing Navigate
+    const navigate = useNavigate
 
     function onChange(evt) {
         const { name, value } = evt.target;
@@ -63,6 +65,7 @@ export default function Login() {
             .then(res => {
                 console.log(res)
                 setMessage(res.data.message)
+                setTimeout(() => message.includes('welcome') ? navigate('/profile') : console.log('login failed'))
             })
             .catch(err => {
                 console.log('hello this is your ', err)
@@ -75,11 +78,11 @@ export default function Login() {
     
         <Wrapper>
             <h1> Please Enter You Login Information </h1>
-            <p>{message.toUpperCase()}</p>
+            <p>{message}</p>
             <form onSubmit={onSubmit}>
                 <label> Username
                     <input
-                        type='text'
+                        type='username'
                         name='username'
                         onChange={onChange}
                         className='name'
@@ -87,7 +90,7 @@ export default function Login() {
                 </label>
                 <label> Password
                     <input
-                        type='text'
+                        type='password'
                         name='password'
                         onChange={onChange}
                         className='pass'
