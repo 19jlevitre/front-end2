@@ -21,28 +21,38 @@ const ProfilePage = styled.div`
     }
     h2{
         font-size: 2 rem;
-    height: 25px;
-    width: 60%;
-    color: #e6ac00;
-    margin: 10px auto;
+        height: 25px;
+        width: 60%;
+        color: #e6ac00;
+        margin: 10px auto;
     }
     .right-new{
         display: flex;
         flex-direction: column;
         margin: 25px;
-
     }
     h3{
         font-weight: 100;
     }
-    
+    nav{
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        height: 80px;
+        background-color: grey;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 `
 
 
 export default function Profile (){
     return(
         <ProfilePage>
-            <h1> Welcome, $User </h1>
+            {/* Add dynamic user value */}
+            <nav><h1> Welcome, $User </h1></nav>
             <div className='content'>
                 <div className='left-events'>
                     <PendingBox/>
