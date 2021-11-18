@@ -1,6 +1,8 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLinkClickHandler } from "react-router-dom";
 import styled from "styled-components";
+import AddUser from "./addusers";
 
 const NewForm = styled.div`
     display: none;
@@ -24,21 +26,25 @@ const initialEvent = {
     location: ''
 }
 
+const initialID = 1;
+
 
 export default function NewEvent() {
-
+    
+    const [clicked, setClicked] = useState(false);
     const [RealValue, setRealValue] = useState(NewForm)
-    const [ userInviteStyle, setUserInviteStyle ] = useState(NewForm)
     const [ eventValues, setEventValues ] = useState(initialEvent)
     const [ message, setMessage ] = useState('')
-
+    const [ potluck, setPotluck ] = useState(initialID);
+    
     const onClick = () => {
       setRealValue(showNewForm)
     }
 
-    const clicker = () => {
-        setUserInviteStyle(userForm)
+    const cancel = () => {
+        setRealValue(NewForm)
     }
+
 
     const onChange = (evt) => {
         const { name, value } = evt.target 
@@ -47,17 +53,22 @@ export default function NewEvent() {
 
     const onSubmit = (evt) => {
         evt.preventDefault()
-
+        
         axios.post('https://buildweek4unit.herokuapp.com/api/potlucks', {...eventValues})
             .then((res) => {
                 console.log(res)
-                res.statusText === 'Created' ? setMessage('Potluck Created! Now invite your Users!') : setMessage('There was an issue with creating your Potluck!')
+                setPotluck(res.data.potluck_id)
+                setClicked(true)
+                res.statusText === 'Created' ? setMessage('Your Event has been created! Now please invite your guests!') : setMessage('There was an issue with creating your Potluck!' )
             })
             .catch((err) => {
-                console.log('this is your ', err)
+                console.log('this is your post ', err)
                 setMessage("Oops, something bad happened. Try again later!")
             })
     }
+
+
+
 
     return(
         <div>
@@ -67,6 +78,8 @@ export default function NewEvent() {
                 New Event
             </label>
             <RealValue>
+                {message}
+                <button onClick={cancel}> Cancel </button>
                 <form onSubmit={onSubmit}>
                     <label> Name
                         <input 
@@ -103,8 +116,9 @@ export default function NewEvent() {
                             onChange={onChange}
                         />
                     </label>
-                    <button type='submit' onClick={clicker}>Create Event</button>
+                    <button type='submit'>Create Event</button>
                 </form>
+                {clicked ? <AddUser ID={potluck}/> : clicked}
             </RealValue>
         
         </div>    
