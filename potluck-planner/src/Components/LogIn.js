@@ -61,7 +61,7 @@ export default function Login() {
     function onSubmit(evt) {
         evt.preventDefault();
         
-        axios.post('https://buildweek4unit.herokuapp.com/api/users/login', {username: loginValues.username, password: loginValues.password})
+        axios.post('https://buildweek4unit.herokuapp.com/api/users/login', {...loginValues})
             .then(res => {
                 console.log(res)
                 setMessage(res.data.message)
