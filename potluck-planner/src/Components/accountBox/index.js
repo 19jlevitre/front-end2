@@ -38,13 +38,13 @@ const BackDrop = styled.div`
     background: linear-gradient(90deg, rgba(241,196,15,1) 20%, rgba(243,172,18,1) 100%);
     `;
 
-    const HeaderContainer = styled.div`
+const HeaderContainer = styled.div`
         width: 100%;
         display: flex;
         flex-direction: column;
         `;
 
-    const HeaderText = styled.h2`
+const HeaderText = styled.h2`
         font-size: 40px;
         font-weight: 600;
         line-height: 1.24;
@@ -54,7 +54,7 @@ const BackDrop = styled.div`
         margin-bottom: 3px;
         `;
 
-    const SmallText = styled.h5`
+const SmallText = styled.h5`
         color: #fff;
         font-weight: 500;
         font-size: 15px;
@@ -63,14 +63,14 @@ const BackDrop = styled.div`
         margin-top: 7px;
         `;
 
-    const InnerContainer = styled.div`
+const InnerContainer = styled.div`
         width: 100%;
         display: flex;
         flex-direction: column;
         padding: 0 1.0rem;
         `;
-    //Styling that was in App I moved below, should still work
-    const AppContainer = styled.div`
+//Styling that was in App I moved below, should still work
+const AppContainer = styled.div`
     width: 100%;
     height: 100%;
     display: flex;
@@ -78,22 +78,22 @@ const BackDrop = styled.div`
     align-items: center;
     justify-content: center;
     `;
-    export function AccountBox(props) {
-        return (
-            <AppContainer>
-                  <BoxContainer>
-                    <TopContainer>
-                        <BackDrop />
-                        <HeaderContainer>
-                            <HeaderText>Sign</HeaderText>
-                            <HeaderText>Up</HeaderText>
-                            <SmallText>Please Sign Up to Continue!</SmallText>
-                        </HeaderContainer>
-                    </TopContainer>
-                    <InnerContainer>
-                        <SignupForms />
-                    </InnerContainer>
-                </BoxContainer>
-            </AppContainer>
+export function AccountBox(props) {
+    return (
+        <AppContainer>
+            <BoxContainer>
+                <TopContainer>
+                    <BackDrop />
+                    <HeaderContainer>
+                        <HeaderText>Sign</HeaderText>
+                        <HeaderText>Up</HeaderText>
+                        <SmallText>Please Sign Up to Continue!</SmallText>
+                    </HeaderContainer>
+                </TopContainer>
+                <InnerContainer>
+                    <SignupForms />
+                </InnerContainer>
+            </BoxContainer>
+        </AppContainer>
     )
 }

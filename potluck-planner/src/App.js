@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { AccountBox } from './Components/accountBox';
 import Login from './Components/LogIn';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Profile from './Components/Profile';
+import Random from './Components/ProfileBoxes/Profile';
 
 
 
@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path='/' element={<AccountBox />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/profile' element={<Profile />} />      
+          <Route path='/profile' element={<Random />} />      
         </Routes>
       </Router>
   );

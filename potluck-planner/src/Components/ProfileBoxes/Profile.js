@@ -1,8 +1,10 @@
-import React from "react";
+import React from 'react';
+import styled from 'styled-components';
+//import { GrHomeRounded } from "react-icons/gr";
 
-export default function Profile (){
-    return(
-        <h2>Pending Invites</h2>
-            
-    )
+//const Box = styled.div`
+//`
+
+export default function Profile() {
+    return (<h1> Profile Page </h1>)
 }
